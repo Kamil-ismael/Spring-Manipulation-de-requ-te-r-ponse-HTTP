@@ -2,6 +2,10 @@ POST http://localhost:8080/students
 Content-Type: application/json
 
 [
-  {"reference":"STD24018","firstName":"Toky","lastName":"Rakoto","age":20},
+  {"reference":"STD24018","firstName":"ismael","lastName":"Rakoto","age":20},
   {"reference":"ST24015","firstName":"John","lastName":"Doe","age":22}
 ]
+
+### GET students - format text/plain
+GET http://localhost:8080/students
+Accept: text/plain

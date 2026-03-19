@@ -1,9 +1,7 @@
 package com.hei.springboot.controller;
 
 import com.hei.springboot.model.Student;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,5 +22,16 @@ public class StudentController {
         return students.stream()
                 .map(s -> s.getFirstName() + " " + s.getLastName())
                 .collect(Collectors.joining(","));
+    }
+    @GetMapping("/students")
+    public String getStudents(@RequestHeader("Accept") String acceptHeader){
+        if ("text/plain".equals(acceptHeader)){
+            return students.stream()
+                    .map(s -> s.getFirstName() + " " + s.getLastName())
+                    .collect(Collectors.joining(","));
+        }
+        else {
+            return "Format not supported";
+        }
     }
 }
